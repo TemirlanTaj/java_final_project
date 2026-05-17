@@ -19,7 +19,7 @@ import java.util.Random;
 public class Scheduler {
 
     private static final LocalTime FIRST_PAIR_START = LocalTime.of(9, 0);
-    private static final int PAIR_MINUTES = 90;
+    private static final int PAIR_MINUTES = 60;
     private static final int UNPLACED_PENALTY = 1000;
     private static final int VACANCY_PENALTY = 10;
 

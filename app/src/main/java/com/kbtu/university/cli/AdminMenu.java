@@ -108,8 +108,8 @@ public class AdminMenu implements Menu {
         System.out.print("Major: ");
         String major = scanner.nextLine().trim();
         System.out.print("Year (1-7): ");
-        int year = parseInt(scanner.nextLine().trim(), 1);
         try {
+            int year = parseRequiredInt(scanner.nextLine().trim(), "Year must be a number");
             UserFactory.createStudent(login, password, major, year);
             System.out.println("Created");
         } catch (RuntimeException e) {
@@ -219,6 +219,14 @@ public class AdminMenu implements Menu {
             return Double.parseDouble(s);
         } catch (NumberFormatException e) {
             return fallback;
+        }
+    }
+
+    private static int parseRequiredInt(String s, String errorMessage) {
+        try {
+            return Integer.parseInt(s);
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException(errorMessage);
         }
     }
 }
